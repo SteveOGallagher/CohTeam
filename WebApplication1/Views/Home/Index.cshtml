@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>CohTeam!</h1>
+    <p class="lead">Find out who the greatest champions of Cohaesus are!</p>
+    <p>@Html.ActionLink("Create your account", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink", @class = "btn btn-primary btn-lg" })</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Enter Competitions</h2>
+        <p>
+            Link your profile to your Assembla account to enter a git commit competition. (Coming soon!)
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h2>Track your progress</h2>
+        <p>Login to view your own person stats.</p>
+    </div>
+    <div class="col-md-4">
+        <h2>View the rankings</h2>
+        <p>See how your scores match up with other colleagues.</p>
+    </div>
+</div>
