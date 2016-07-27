@@ -10,7 +10,7 @@
             @{ 
                 var currentUserId = User.Identity.GetUserName();
             }
-            @Html.ActionLink(currentUserId, "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink(currentUserId + "'s Profile", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
         <li><a href="javascript:document.getElementById('logoutForm').submit()">Log out</a></li>
     </ul>

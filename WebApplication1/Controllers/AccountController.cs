@@ -17,7 +17,7 @@ namespace WebApplication1.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        public string FirstName;
+        public string GoogleUserFirstName;
 
 
         public AccountController()
@@ -339,8 +339,11 @@ namespace WebApplication1.Controllers
                 var givenNameClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName);
 
                 var email = emailClaim.Value;
-                FirstName = givenNameClaim.Value;
+                GoogleUserFirstName = givenNameClaim.Value;
                 var lastname = lastNameClaim.Value;
+
+                var currentUserId = User.Identity.GetUserId();
+                var currentUser = UserManager.FindById(currentUserId);
             }
 
             // Sign in the user with this external login provider if the user already has a login
@@ -358,7 +361,7 @@ namespace WebApplication1.Controllers
                     // If the user does not have an account, then prompt the user to create an account
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email, FirstName = GoogleUserFirstName });
             }
         }
 
@@ -382,7 +385,7 @@ namespace WebApplication1.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
