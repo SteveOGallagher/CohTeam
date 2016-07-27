@@ -1,4 +1,5 @@
-﻿@model WebApplication1.Models.IndexViewModel
+﻿@using Microsoft.AspNet.Identity
+@model WebApplication1.Models.IndexViewModel
 @{
     ViewBag.Title = "Profile";
 }
@@ -7,32 +8,12 @@
 
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
-    <h4>Change your profile settings</h4>
+    <h4>View your profile details</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>Password:</dt>
-        <dd>
-            [
-            @if (Model.HasPassword)
-            {
-                @Html.ActionLink("Change your password", "ChangePassword")
-            }
-            else
-            {
-                @Html.ActionLink("Create", "SetPassword")
-            }
-            ]
-        </dd>
-  
-    </dl>
     <dl class="dl-horizontal">
         <dt>Name:</dt>
         <dd>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-                </div>
-            </div>
+            @Model.Username
         </dd>
 
     </dl>
