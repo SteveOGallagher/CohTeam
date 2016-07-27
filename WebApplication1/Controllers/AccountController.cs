@@ -17,6 +17,8 @@ namespace WebApplication1.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        public string FirstName;
+
 
         public AccountController()
         {
@@ -76,6 +78,7 @@ namespace WebApplication1.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+
             switch (result)
             {
                 case SignInStatus.Success:
@@ -162,7 +165,7 @@ namespace WebApplication1.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
+                    
                     return RedirectToAction("Index", "Home");
                 }
                 AddErrors(result);
@@ -336,7 +339,7 @@ namespace WebApplication1.Controllers
                 var givenNameClaim = externalIdentity.Result.Claims.FirstOrDefault(c => c.Type == ClaimTypes.GivenName);
 
                 var email = emailClaim.Value;
-                var firstName = givenNameClaim.Value;
+                FirstName = givenNameClaim.Value;
                 var lastname = lastNameClaim.Value;
             }
 

@@ -88,6 +88,15 @@ namespace WebApplication1
         }
     }
 
+    public class ApplicationUserStore : UserStore<ApplicationUser>
+    {
+        public ApplicationUserStore(ApplicationDbContext context)
+            : base(context)
+        {
+
+        }
+    }
+
     // Configure the application sign-in manager which is used in this application.
     public class ApplicationSignInManager : SignInManager<ApplicationUser, string>
     {
