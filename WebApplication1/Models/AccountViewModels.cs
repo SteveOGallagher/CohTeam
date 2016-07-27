@@ -12,6 +12,10 @@ namespace WebApplication1.Models
         [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Rank")]
+        public string EmployeeRank { get; set; }
     }
 
     public class ExternalLoginListViewModel
@@ -87,6 +91,7 @@ namespace WebApplication1.Models
         public string ConfirmPassword { get; set; }
 
         public string FirstName { get; set; }
+        public string EmployeeRank { get; set; }
     }
 
     public class ResetPasswordViewModel

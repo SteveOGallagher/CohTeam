@@ -96,3 +96,4 @@ c:\users\ogall\documents\visual studio 2015\Projects\WebApplication1\WebApplicat
 c:\users\ogall\documents\visual studio 2015\Projects\WebApplication1\WebApplication1\obj\Debug\CohTeam.pdb
 c:\users\ogall\documents\visual studio 2015\Projects\WebApplication1\WebApplication1\obj\Debug\CohTeam.Migrations.InitialCreate.resources
 c:\users\ogall\documents\visual studio 2015\Projects\WebApplication1\WebApplication1\obj\Debug\WebApplication1.csproj.GenerateResource.Cache
+C:\Users\ogall\documents\visual studio 2015\Projects\WebApplication1\WebApplication1\obj\Debug\CohTeam.Migrations.Migration.resources

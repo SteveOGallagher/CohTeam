@@ -18,6 +18,7 @@ namespace WebApplication1.Models
         }
 
         public string FirstName { get; set; }
+        public string EmployeeRank { get; set; }
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

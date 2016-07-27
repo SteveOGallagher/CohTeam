@@ -18,7 +18,7 @@ namespace WebApplication1.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
         public string GoogleUserFirstName;
-
+        public string EmployeeRank;
 
         public AccountController()
         {
@@ -154,7 +154,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email, FirstName = model.FirstName, EmployeeRank = model.EmployeeRank };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -385,7 +385,7 @@ namespace WebApplication1.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email, EmployeeRank = model.EmployeeRank };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
