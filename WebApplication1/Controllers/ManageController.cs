@@ -7,6 +7,8 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using WebApplication1.Models;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace WebApplication1.Controllers
 {
@@ -100,11 +102,36 @@ namespace WebApplication1.Controllers
                 var user = UserManager.FindById(userId);
                 user.EmployeeRank = model.EmployeeRank;
                 user.FavouriteColour = model.FavouriteColour;
+                
 
                 return RedirectToAction("Index");
             }
 
             return View(model);
+        }
+
+        public void SaveProfileUpdates(IndexViewModel model)
+        {
+            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                SqlCommand cmd = new SqlCommand("saveDetails", con);
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                SqlParameter EmployeeRank = new SqlParameter();
+                EmployeeRank.ParameterName = "@EmployeeRank";
+                EmployeeRank.Value = model.EmployeeRank;
+                cmd.Parameters.Add(EmployeeRank);
+
+                SqlParameter FavouriteColour = new SqlParameter();
+                FavouriteColour.ParameterName = "@FavouriteColour";
+                FavouriteColour.Value = model.FavouriteColour;
+                cmd.Parameters.Add(FavouriteColour);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
 
         //
