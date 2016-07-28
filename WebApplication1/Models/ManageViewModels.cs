@@ -13,7 +13,9 @@ namespace WebApplication1.Models
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
         public string Username { get; set; }
+        [Display(Name = "Employee Rank")]
         public string EmployeeRank { get; set; }
+        [Display(Name = "Favourite Colour")]
         public string FavouriteColour { get; set; }
     }
 

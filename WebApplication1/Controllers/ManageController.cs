@@ -78,6 +78,35 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public ActionResult Edit()
+        {
+            var userId = User.Identity.GetUserId();
+            var model = new IndexViewModel
+            {
+                Username = User.Identity.Name,
+                EmployeeRank = UserManager.FindById(userId).EmployeeRank,
+                FavouriteColour = UserManager.FindById(userId).FavouriteColour
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(IndexViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var userId = User.Identity.GetUserId();
+                var user = UserManager.FindById(userId);
+                user.EmployeeRank = model.EmployeeRank;
+                user.FavouriteColour = model.FavouriteColour;
+
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+        }
+
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
