@@ -13,6 +13,13 @@ namespace WebApplication1.Models
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
+        public List<string> EmployeeRankNames = new List<string> { "Trainee", "Junior", "Associate", "Senior", "Lead", "Technical Director" };
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> EmployeeRanks
+        {
+            get { return new System.Web.Mvc.SelectList(EmployeeRankNames); }
+        }
+
         [Required]
         [Display(Name = "Rank")]
         public string EmployeeRank { get; set; }
