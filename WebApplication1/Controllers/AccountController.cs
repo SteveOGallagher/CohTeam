@@ -385,7 +385,7 @@ namespace WebApplication1.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email, EmployeeRank = model.EmployeeRank };
+                var user = new ApplicationUser { UserName = model.FirstName, Email = model.Email, EmployeeRank = model.EmployeeRank, FavouriteColour = model.FavouriteColour };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

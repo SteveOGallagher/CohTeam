@@ -16,6 +16,11 @@ namespace WebApplication1.Models
         [Required]
         [Display(Name = "Rank")]
         public string EmployeeRank { get; set; }
+
+        [Required]
+        [Display(Name = "Favourite Colour")]
+        public string FavouriteColour { get; set; }
+        
     }
 
     public class ExternalLoginListViewModel

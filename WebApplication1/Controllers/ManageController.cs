@@ -72,7 +72,8 @@ namespace WebApplication1.Controllers
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId),
                 Username = User.Identity.Name,
-                EmployeeRank = UserManager.FindById(userId).EmployeeRank
+                EmployeeRank = UserManager.FindById(userId).EmployeeRank,
+                FavouriteColour = UserManager.FindById(userId).FavouriteColour
             };
             return View(model);
         }

@@ -14,6 +14,7 @@ namespace WebApplication1.Models
         public bool BrowserRemembered { get; set; }
         public string Username { get; set; }
         public string EmployeeRank { get; set; }
+        public string FavouriteColour { get; set; }
     }
 
     public class ManageLoginsViewModel
