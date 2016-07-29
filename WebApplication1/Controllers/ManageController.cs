@@ -102,7 +102,8 @@ namespace WebApplication1.Controllers
                 var user = UserManager.FindById(userId);
                 user.EmployeeRank = model.EmployeeRank;
                 user.FavouriteColour = model.FavouriteColour;
-                
+                UserManager.Update(user);
+                //SaveProfileUpdates(model);
 
                 return RedirectToAction("Index");
             }
@@ -112,7 +113,7 @@ namespace WebApplication1.Controllers
 
         public void SaveProfileUpdates(IndexViewModel model)
         {
-            string connectionString = ConfigurationManager.ConnectionStrings["DBCS"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
