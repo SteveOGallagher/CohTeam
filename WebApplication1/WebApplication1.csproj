@@ -293,6 +293,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Web1.config" />
     <Content Include="Views\Manage\Edit.cshtml" />
+    <Content Include="Views\Home\Login_Partial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

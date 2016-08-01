@@ -14,6 +14,16 @@ namespace WebApplication1.Controllers
             return View();
         }
 
+        [ChildActionOnly]
+        public ActionResult LoginButton()
+        {
+            if (!User.Identity.IsAuthenticated)
+            {
+                return PartialView("Login_Partial");
+            }
+            return new EmptyResult();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
