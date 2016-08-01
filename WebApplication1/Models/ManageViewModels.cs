@@ -17,6 +17,13 @@ namespace WebApplication1.Models
         public string EmployeeRank { get; set; }
         [Display(Name = "Favourite Colour")]
         public string FavouriteColour { get; set; }
+
+        public List<string> EmployeeRankNames = new List<string> { "Trainee", "Junior", "Associate", "Senior", "Lead", "Technical Director" };
+
+        public IEnumerable<System.Web.Mvc.SelectListItem> EmployeeRanks
+        {
+            get { return new System.Web.Mvc.SelectList(EmployeeRankNames); }
+        }
     }
 
     public class ManageLoginsViewModel

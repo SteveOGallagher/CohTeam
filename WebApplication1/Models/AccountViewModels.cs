@@ -13,6 +13,7 @@ namespace WebApplication1.Models
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
+        // TODO: This is duplicated in Manage for edit as well. Unify.
         public List<string> EmployeeRankNames = new List<string> { "Trainee", "Junior", "Associate", "Senior", "Lead", "Technical Director" };
 
         public IEnumerable<System.Web.Mvc.SelectListItem> EmployeeRanks
