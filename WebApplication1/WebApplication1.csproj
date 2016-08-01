@@ -294,6 +294,7 @@
     <Content Include="Web1.config" />
     <Content Include="Views\Manage\Edit.cshtml" />
     <Content Include="Views\Home\Login_Partial.cshtml" />
+    <Content Include="Views\Manage\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

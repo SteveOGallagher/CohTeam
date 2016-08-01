@@ -9,6 +9,7 @@ using Microsoft.Owin.Security;
 using WebApplication1.Models;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Web.Security;
 
 namespace WebApplication1.Controllers
 {
@@ -109,6 +110,49 @@ namespace WebApplication1.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Delete()
+        {
+            var userId = User.Identity.GetUserId();
+            var model = new IndexViewModel
+            {
+                Username = User.Identity.Name,
+                EmployeeRank = UserManager.FindById(userId).EmployeeRank,
+                FavouriteColour = UserManager.FindById(userId).FavouriteColour
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(IndexViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                // Sign the user out
+                AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+
+                // Find and delete user details from database
+                var userId = User.Identity.GetUserId();
+                var user = UserManager.FindById(userId);
+                UserManager.Delete(user);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
+        //
+        // POST: /Account/LogOff
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Index", "Home");
         }
 
         public void SaveProfileUpdates(IndexViewModel model)
