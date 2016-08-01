@@ -1,0 +1,12 @@
+﻿@model WebApplication1.Models.BowlingViewModel
+
+@{
+    ViewBag.Title = "Bowling Results";
+}
+<h2>@ViewBag.Title</h2>
+<h3>View all users favourite colours:</h3>
+
+@foreach (string user in Model.UserNames)
+{
+    <p>@user</p>
+}
