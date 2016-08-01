@@ -8,5 +8,7 @@ namespace WebApplication1.Models
     public class BowlingViewModel
     {
         public List<string> UserNames { get; set; }
+        public List<string> FavouriteColours { get; set; }
+        public List<List<string>> BowlingResults { get; set; }
     }
 }

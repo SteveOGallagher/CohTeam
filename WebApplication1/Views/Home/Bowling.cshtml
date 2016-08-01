@@ -6,7 +6,7 @@
 <h2>@ViewBag.Title</h2>
 <h3>View all users favourite colours:</h3>
 
-@foreach (string user in Model.UserNames)
+@foreach ( var user in Model.BowlingResults)
 {
-    <p>@user</p>
+    <p>@user[0] - @user[1]</p>
 }

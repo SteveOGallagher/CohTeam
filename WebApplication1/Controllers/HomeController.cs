@@ -43,17 +43,24 @@ namespace WebApplication1.Controllers
 
         public ActionResult Bowling()
         {
-            var users = new List<string>();
             var knownUsers = UserManager.Users.ToList();
-            
-            foreach( var u in knownUsers)
+
+            var users = new List<string>();
+            var colours = new List<string>();
+            var bowlingResults = new List<List<string>>();
+
+            for (var u = 0; u < knownUsers.Count; u++)
             {
-                users.Add(u.UserName);
+                users.Add(knownUsers[u].UserName);
+                colours.Add(knownUsers[u].FavouriteColour);
+                bowlingResults.Add(new List<string> { knownUsers[u].UserName, knownUsers[u].FavouriteColour });
             };
 
             var model = new BowlingViewModel
             {
-                UserNames = users
+                UserNames = users,
+                FavouriteColours = colours,
+                BowlingResults = bowlingResults
             };
 
             
